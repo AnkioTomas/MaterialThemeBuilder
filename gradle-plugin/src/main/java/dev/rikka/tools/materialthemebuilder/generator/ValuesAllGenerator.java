@@ -18,9 +18,11 @@ public class ValuesAllGenerator extends ValuesGenerator {
 
     private final MaterialThemeBuilderExtension extension;
 
-    public ValuesAllGenerator(File file, MaterialThemeBuilderExtension extension) {
+    private int type = 0;
+    public ValuesAllGenerator(File file, MaterialThemeBuilderExtension extension,int type) {
         super(file);
         this.extension = extension;
+        this.type = type;
     }
 
     @Override
@@ -90,85 +92,90 @@ public class ValuesAllGenerator extends ValuesGenerator {
             String name, TonalPalette primary, TonalPalette secondary, TonalPalette tertiary, TonalPalette error,
             TonalPalette neutral, TonalPalette neutralVariant) {
 
-        // MDC light colors
-        color(primary.tone(40), String.format("md_theme_%s_light_primary", name));
-        color(primary.tone(100), String.format("md_theme_%s_light_onPrimary", name));
-        color(primary.tone(90), String.format("md_theme_%s_light_primaryContainer", name));
-        color(primary.tone(10), String.format("md_theme_%s_light_onPrimaryContainer", name));
+        if(this.type==0){
+            // MDC light colors
+            color(primary.tone(40), String.format("md_theme_%s_light_primary", name));
+            color(primary.tone(100), String.format("md_theme_%s_light_onPrimary", name));
+            color(primary.tone(90), String.format("md_theme_%s_light_primaryContainer", name));
+            color(primary.tone(10), String.format("md_theme_%s_light_onPrimaryContainer", name));
 
-        color(secondary.tone(40), String.format("md_theme_%s_light_secondary", name));
-        color(secondary.tone(100), String.format("md_theme_%s_light_onSecondary", name));
-        color(secondary.tone(90), String.format("md_theme_%s_light_secondaryContainer", name));
-        color(secondary.tone(10), String.format("md_theme_%s_light_onSecondaryContainer", name));
+            color(secondary.tone(40), String.format("md_theme_%s_light_secondary", name));
+            color(secondary.tone(100), String.format("md_theme_%s_light_onSecondary", name));
+            color(secondary.tone(90), String.format("md_theme_%s_light_secondaryContainer", name));
+            color(secondary.tone(10), String.format("md_theme_%s_light_onSecondaryContainer", name));
 
-        color(tertiary.tone(40), String.format("md_theme_%s_light_tertiary", name));
-        color(tertiary.tone(100), String.format("md_theme_%s_light_onTertiary", name));
-        color(tertiary.tone(90), String.format("md_theme_%s_light_tertiaryContainer", name));
-        color(tertiary.tone(10), String.format("md_theme_%s_light_onTertiaryContainer", name));
+            color(tertiary.tone(40), String.format("md_theme_%s_light_tertiary", name));
+            color(tertiary.tone(100), String.format("md_theme_%s_light_onTertiary", name));
+            color(tertiary.tone(90), String.format("md_theme_%s_light_tertiaryContainer", name));
+            color(tertiary.tone(10), String.format("md_theme_%s_light_onTertiaryContainer", name));
 
-        color(error.tone(40), String.format("md_theme_%s_light_error", name));
-        color(error.tone(100), String.format("md_theme_%s_light_onError", name));
-        color(error.tone(90), String.format("md_theme_%s_light_errorContainer", name));
-        color(error.tone(10), String.format("md_theme_%s_light_onErrorContainer", name));
+            color(error.tone(40), String.format("md_theme_%s_light_error", name));
+            color(error.tone(100), String.format("md_theme_%s_light_onError", name));
+            color(error.tone(90), String.format("md_theme_%s_light_errorContainer", name));
+            color(error.tone(10), String.format("md_theme_%s_light_onErrorContainer", name));
 
-        color(neutral.tone(98), String.format("md_theme_%s_light_background", name));
-        color(neutral.tone(10), String.format("md_theme_%s_light_onBackground", name));
-        color(neutral.tone(98), String.format("md_theme_%s_light_surface", name));
-        color(neutral.tone(10), String.format("md_theme_%s_light_onSurface", name));
+            color(neutral.tone(98), String.format("md_theme_%s_light_background", name));
+            color(neutral.tone(10), String.format("md_theme_%s_light_onBackground", name));
+            color(neutral.tone(98), String.format("md_theme_%s_light_surface", name));
+            color(neutral.tone(10), String.format("md_theme_%s_light_onSurface", name));
 
-        color(neutral.tone(94), String.format("md_theme_%s_light_container", name));
-        color(neutral.tone(96), String.format("md_theme_%s_light_containerLow", name));
-        color(neutral.tone(100), String.format("md_theme_%s_light_containerLowest", name));
-        color(neutral.tone(92), String.format("md_theme_%s_light_containerHigh", name));
-        color(neutral.tone(90), String.format("md_theme_%s_light_containerHighest", name));
+            color(neutral.tone(94), String.format("md_theme_%s_light_container", name));
+            color(neutral.tone(96), String.format("md_theme_%s_light_containerLow", name));
+            color(neutral.tone(100), String.format("md_theme_%s_light_containerLowest", name));
+            color(neutral.tone(92), String.format("md_theme_%s_light_containerHigh", name));
+            color(neutral.tone(90), String.format("md_theme_%s_light_containerHighest", name));
 
-        color(neutralVariant.tone(90), String.format("md_theme_%s_light_surfaceVariant", name));
-        color(neutralVariant.tone(30), String.format("md_theme_%s_light_onSurfaceVariant", name));
-        color(neutralVariant.tone(50), String.format("md_theme_%s_light_outline", name));
+            color(neutralVariant.tone(90), String.format("md_theme_%s_light_surfaceVariant", name));
+            color(neutralVariant.tone(30), String.format("md_theme_%s_light_onSurfaceVariant", name));
+            color(neutralVariant.tone(50), String.format("md_theme_%s_light_outline", name));
 
-        color(neutral.tone(95), String.format("md_theme_%s_light_inverseOnSurface", name));
-        color(neutral.tone(20), String.format("md_theme_%s_light_inverseSurface", name));
-        color(primary.tone(80), String.format("md_theme_%s_light_primaryInverse", name));
+            color(neutral.tone(95), String.format("md_theme_%s_light_inverseOnSurface", name));
+            color(neutral.tone(20), String.format("md_theme_%s_light_inverseSurface", name));
+            color(primary.tone(80), String.format("md_theme_%s_light_primaryInverse", name));
+        }else{
+            // MDC dark colors
+            color(primary.tone(80), String.format("md_theme_%s_dark_primary", name));
+            color(primary.tone(20), String.format("md_theme_%s_dark_onPrimary", name));
+            color(primary.tone(30), String.format("md_theme_%s_dark_primaryContainer", name));
+            color(primary.tone(90), String.format("md_theme_%s_dark_onPrimaryContainer", name));
 
-        // MDC dark colors
-        color(primary.tone(80), String.format("md_theme_%s_dark_primary", name));
-        color(primary.tone(20), String.format("md_theme_%s_dark_onPrimary", name));
-        color(primary.tone(30), String.format("md_theme_%s_dark_primaryContainer", name));
-        color(primary.tone(90), String.format("md_theme_%s_dark_onPrimaryContainer", name));
+            color(secondary.tone(80), String.format("md_theme_%s_dark_secondary", name));
+            color(secondary.tone(20), String.format("md_theme_%s_dark_onSecondary", name));
+            color(secondary.tone(30), String.format("md_theme_%s_dark_secondaryContainer", name));
+            color(secondary.tone(90), String.format("md_theme_%s_dark_onSecondaryContainer", name));
 
-        color(secondary.tone(80), String.format("md_theme_%s_dark_secondary", name));
-        color(secondary.tone(20), String.format("md_theme_%s_dark_onSecondary", name));
-        color(secondary.tone(30), String.format("md_theme_%s_dark_secondaryContainer", name));
-        color(secondary.tone(90), String.format("md_theme_%s_dark_onSecondaryContainer", name));
+            color(tertiary.tone(80), String.format("md_theme_%s_dark_tertiary", name));
+            color(tertiary.tone(20), String.format("md_theme_%s_dark_onTertiary", name));
+            color(tertiary.tone(30), String.format("md_theme_%s_dark_tertiaryContainer", name));
+            color(tertiary.tone(90), String.format("md_theme_%s_dark_onTertiaryContainer", name));
 
-        color(tertiary.tone(80), String.format("md_theme_%s_dark_tertiary", name));
-        color(tertiary.tone(20), String.format("md_theme_%s_dark_onTertiary", name));
-        color(tertiary.tone(30), String.format("md_theme_%s_dark_tertiaryContainer", name));
-        color(tertiary.tone(90), String.format("md_theme_%s_dark_onTertiaryContainer", name));
+            color(error.tone(80), String.format("md_theme_%s_dark_error", name));
+            color(error.tone(20), String.format("md_theme_%s_dark_onError", name));
+            color(error.tone(30), String.format("md_theme_%s_dark_errorContainer", name));
+            color(error.tone(90), String.format("md_theme_%s_dark_onErrorContainer", name));
 
-        color(error.tone(80), String.format("md_theme_%s_dark_error", name));
-        color(error.tone(20), String.format("md_theme_%s_dark_onError", name));
-        color(error.tone(30), String.format("md_theme_%s_dark_errorContainer", name));
-        color(error.tone(90), String.format("md_theme_%s_dark_onErrorContainer", name));
+            color(neutral.tone(6), String.format("md_theme_%s_dark_background", name));
+            color(neutral.tone(90), String.format("md_theme_%s_dark_onBackground", name));
+            color(neutral.tone(6), String.format("md_theme_%s_dark_surface", name));
+            color(neutral.tone(80), String.format("md_theme_%s_dark_onSurface", name));
 
-        color(neutral.tone(6), String.format("md_theme_%s_dark_background", name));
-        color(neutral.tone(90), String.format("md_theme_%s_dark_onBackground", name));
-        color(neutral.tone(6), String.format("md_theme_%s_dark_surface", name));
-        color(neutral.tone(80), String.format("md_theme_%s_dark_onSurface", name));
+            color(neutral.tone(12), String.format("md_theme_%s_dark_container", name));
+            color(neutral.tone(10), String.format("md_theme_%s_dark_containerLow", name));
+            color(neutral.tone(4), String.format("md_theme_%s_dark_containerLowest", name));
+            color(neutral.tone(17), String.format("md_theme_%s_dark_containerHigh", name));
+            color(neutral.tone(22), String.format("md_theme_%s_dark_containerHighest", name));
 
-        color(neutral.tone(12), String.format("md_theme_%s_dark_container", name));
-        color(neutral.tone(10), String.format("md_theme_%s_dark_containerLow", name));
-        color(neutral.tone(4), String.format("md_theme_%s_dark_containerLowest", name));
-        color(neutral.tone(17), String.format("md_theme_%s_dark_containerHigh", name));
-        color(neutral.tone(22), String.format("md_theme_%s_dark_containerHighest", name));
+            color(neutralVariant.tone(30), String.format("md_theme_%s_dark_surfaceVariant", name));
+            color(neutralVariant.tone(80), String.format("md_theme_%s_dark_onSurfaceVariant", name));
+            color(neutralVariant.tone(60), String.format("md_theme_%s_dark_outline", name));
 
-        color(neutralVariant.tone(30), String.format("md_theme_%s_dark_surfaceVariant", name));
-        color(neutralVariant.tone(80), String.format("md_theme_%s_dark_onSurfaceVariant", name));
-        color(neutralVariant.tone(60), String.format("md_theme_%s_dark_outline", name));
+            color(neutral.tone(20), String.format("md_theme_%s_dark_inverseOnSurface", name));
+            color(neutral.tone(90), String.format("md_theme_%s_dark_inverseSurface", name));
+            color(primary.tone(40), String.format("md_theme_%s_dark_primaryInverse", name));
+        }
 
-        color(neutral.tone(20), String.format("md_theme_%s_dark_inverseOnSurface", name));
-        color(neutral.tone(90), String.format("md_theme_%s_dark_inverseSurface", name));
-        color(primary.tone(40), String.format("md_theme_%s_dark_primaryInverse", name));
+
+
 
         // MD3 color tokens
         if (extension.isGeneratePalette()) {
@@ -197,80 +204,82 @@ public class ValuesAllGenerator extends ValuesGenerator {
             String nameLowerUnderScore, String nameUpperCamel,
             String lightThemeNameFormat, String parentLightThemeName,
             String darkThemeNameFormat, String parentDarkThemeName) {
+        if(this.type==0) {
+            beginStyle(String.format(lightThemeNameFormat, nameUpperCamel), parentLightThemeName);
+            styleColorRef("colorPrimary", String.format("md_theme_%s_light_primary", nameLowerUnderScore));
+            styleColorRef("colorOnPrimary", String.format("md_theme_%s_light_onPrimary", nameLowerUnderScore));
+            styleColorRef("colorPrimaryContainer", String.format("md_theme_%s_light_primaryContainer", nameLowerUnderScore));
+            styleColorRef("colorOnPrimaryContainer", String.format("md_theme_%s_light_onPrimaryContainer", nameLowerUnderScore));
+            styleColorRef("colorSecondary", String.format("md_theme_%s_light_secondary", nameLowerUnderScore));
+            styleColorRef("colorOnSecondary", String.format("md_theme_%s_light_onSecondary", nameLowerUnderScore));
+            styleColorRef("colorSecondaryContainer", String.format("md_theme_%s_light_secondaryContainer", nameLowerUnderScore));
+            styleColorRef("colorOnSecondaryContainer", String.format("md_theme_%s_light_onSecondaryContainer", nameLowerUnderScore));
+            styleColorRef("colorTertiary", String.format("md_theme_%s_light_tertiary", nameLowerUnderScore));
+            styleColorRef("colorOnTertiary", String.format("md_theme_%s_light_onTertiary", nameLowerUnderScore));
+            styleColorRef("colorTertiaryContainer", String.format("md_theme_%s_light_tertiaryContainer", nameLowerUnderScore));
+            styleColorRef("colorOnTertiaryContainer", String.format("md_theme_%s_light_onTertiaryContainer", nameLowerUnderScore));
+            styleColorRef("colorError", String.format("md_theme_%s_light_error", nameLowerUnderScore));
+            styleColorRef("colorErrorContainer", String.format("md_theme_%s_light_errorContainer", nameLowerUnderScore));
+            styleColorRef("colorOnError", String.format("md_theme_%s_light_onError", nameLowerUnderScore));
+            styleColorRef("colorOnErrorContainer", String.format("md_theme_%s_light_onErrorContainer", nameLowerUnderScore));
+            styleColorRef("android:colorBackground", String.format("md_theme_%s_light_surface", nameLowerUnderScore));
+            styleColorRef("colorOnBackground", String.format("md_theme_%s_light_onBackground", nameLowerUnderScore));
+            styleColorRef("colorSurface", String.format("md_theme_%s_light_surface", nameLowerUnderScore));
+            styleColorRef("colorSurfaceContainer", String.format("md_theme_%s_light_container", nameLowerUnderScore));
+            styleColorRef("colorSurfaceContainerLow", String.format("md_theme_%s_light_containerLow", nameLowerUnderScore));
+            styleColorRef("colorSurfaceContainerLowest", String.format("md_theme_%s_light_containerLowest", nameLowerUnderScore));
+            styleColorRef("colorSurfaceContainerHigh", String.format("md_theme_%s_light_containerHigh", nameLowerUnderScore));
+            styleColorRef("colorSurfaceContainerHighest", String.format("md_theme_%s_light_containerHighest", nameLowerUnderScore));
+            styleColorRef("colorOnSurface", String.format("md_theme_%s_light_onSurface", nameLowerUnderScore));
+            styleColorRef("colorSurfaceVariant", String.format("md_theme_%s_light_surfaceVariant", nameLowerUnderScore));
+            styleColorRef("colorOnSurfaceVariant", String.format("md_theme_%s_light_onSurfaceVariant", nameLowerUnderScore));
+            styleColorRef("colorOutline", String.format("md_theme_%s_light_outline", nameLowerUnderScore));
+            styleColorRef("colorOnSurfaceInverse", String.format("md_theme_%s_light_inverseOnSurface", nameLowerUnderScore));
+            styleColorRef("colorSurfaceInverse", String.format("md_theme_%s_light_inverseSurface", nameLowerUnderScore));
+            styleColorRef("colorPrimaryInverse", String.format("md_theme_%s_light_primaryInverse", nameLowerUnderScore));
 
-        beginStyle(String.format(lightThemeNameFormat, nameUpperCamel), parentLightThemeName);
-        styleColorRef("colorPrimary", String.format("md_theme_%s_light_primary", nameLowerUnderScore));
-        styleColorRef("colorOnPrimary", String.format("md_theme_%s_light_onPrimary", nameLowerUnderScore));
-        styleColorRef("colorPrimaryContainer", String.format("md_theme_%s_light_primaryContainer", nameLowerUnderScore));
-        styleColorRef("colorOnPrimaryContainer", String.format("md_theme_%s_light_onPrimaryContainer", nameLowerUnderScore));
-        styleColorRef("colorSecondary", String.format("md_theme_%s_light_secondary", nameLowerUnderScore));
-        styleColorRef("colorOnSecondary", String.format("md_theme_%s_light_onSecondary", nameLowerUnderScore));
-        styleColorRef("colorSecondaryContainer", String.format("md_theme_%s_light_secondaryContainer", nameLowerUnderScore));
-        styleColorRef("colorOnSecondaryContainer", String.format("md_theme_%s_light_onSecondaryContainer", nameLowerUnderScore));
-        styleColorRef("colorTertiary", String.format("md_theme_%s_light_tertiary", nameLowerUnderScore));
-        styleColorRef("colorOnTertiary", String.format("md_theme_%s_light_onTertiary", nameLowerUnderScore));
-        styleColorRef("colorTertiaryContainer", String.format("md_theme_%s_light_tertiaryContainer", nameLowerUnderScore));
-        styleColorRef("colorOnTertiaryContainer", String.format("md_theme_%s_light_onTertiaryContainer", nameLowerUnderScore));
-        styleColorRef("colorError", String.format("md_theme_%s_light_error", nameLowerUnderScore));
-        styleColorRef("colorErrorContainer", String.format("md_theme_%s_light_errorContainer", nameLowerUnderScore));
-        styleColorRef("colorOnError", String.format("md_theme_%s_light_onError", nameLowerUnderScore));
-        styleColorRef("colorOnErrorContainer", String.format("md_theme_%s_light_onErrorContainer", nameLowerUnderScore));
-        styleColorRef("android:colorBackground", String.format("md_theme_%s_light_surface", nameLowerUnderScore));
-        styleColorRef("colorOnBackground", String.format("md_theme_%s_light_onBackground", nameLowerUnderScore));
-        styleColorRef("colorSurface", String.format("md_theme_%s_light_surface", nameLowerUnderScore));
-        styleColorRef("colorSurfaceContainer", String.format("md_theme_%s_light_container", nameLowerUnderScore));
-        styleColorRef("colorSurfaceContainerLow", String.format("md_theme_%s_light_containerLow", nameLowerUnderScore));
-        styleColorRef("colorSurfaceContainerLowest", String.format("md_theme_%s_light_containerLowest", nameLowerUnderScore));
-        styleColorRef("colorSurfaceContainerHigh", String.format("md_theme_%s_light_containerHigh", nameLowerUnderScore));
-        styleColorRef("colorSurfaceContainerHighest", String.format("md_theme_%s_light_containerHighest", nameLowerUnderScore));
-        styleColorRef("colorOnSurface", String.format("md_theme_%s_light_onSurface", nameLowerUnderScore));
-        styleColorRef("colorSurfaceVariant", String.format("md_theme_%s_light_surfaceVariant", nameLowerUnderScore));
-        styleColorRef("colorOnSurfaceVariant", String.format("md_theme_%s_light_onSurfaceVariant", nameLowerUnderScore));
-        styleColorRef("colorOutline", String.format("md_theme_%s_light_outline", nameLowerUnderScore));
-        styleColorRef("colorOnSurfaceInverse", String.format("md_theme_%s_light_inverseOnSurface", nameLowerUnderScore));
-        styleColorRef("colorSurfaceInverse", String.format("md_theme_%s_light_inverseSurface", nameLowerUnderScore));
-        styleColorRef("colorPrimaryInverse", String.format("md_theme_%s_light_primaryInverse", nameLowerUnderScore));
+            // Extended colors
+            for (MaterialThemeBuilderExtension.ExtendedColor extendedColor : extension.getExtendedColors()) {
+                for (MaterialTheme.Color color : MaterialTheme.COLORS) {
+                    styleColorRef(
+                            color.getAttributeName(extendedColor.getNameForAttribute()),
+                            color.getFileName(nameLowerUnderScore, true, extendedColor.getNameForAttribute()));
+                }
+                style("harmonize" + extendedColor.getNameForAttribute(), Boolean.toString(extendedColor.isHarmonize()));
+            }
 
-        // Extended colors
-        for (MaterialThemeBuilderExtension.ExtendedColor extendedColor : extension.getExtendedColors()) {
-            for (MaterialTheme.Color color : MaterialTheme.COLORS) {
-                styleColorRef(
-                        color.getAttributeName(extendedColor.getNameForAttribute()),
-                        color.getFileName(nameLowerUnderScore, true, extendedColor.getNameForAttribute()));
+            if (extension.isGeneratePalette()) {
+                for (int tone : MaterialTheme.TONE_VALUES) {
+                    styleColorRef(String.format("palettePrimary%d", tone),
+                            String.format("md_theme_%s_palette_primary_%d", nameLowerUnderScore, tone));
+                }
+                for (int tone : MaterialTheme.TONE_VALUES) {
+                    styleColorRef(String.format("paletteSecondary%d", tone),
+                            String.format("md_theme_%s_palette_secondary_%d", nameLowerUnderScore, tone));
+                }
+                for (int tone : MaterialTheme.TONE_VALUES) {
+                    styleColorRef(String.format("paletteTertiary%d", tone),
+                            String.format("md_theme_%s_palette_tertiary_%d", nameLowerUnderScore, tone));
+                }
+                for (int tone : MaterialTheme.TONE_VALUES) {
+                    styleColorRef(String.format("paletteError%d", tone),
+                            String.format("md_theme_%s_palette_error_%d", nameLowerUnderScore, tone));
+                }
+                for (int tone : MaterialTheme.TONE_VALUES) {
+                    styleColorRef(String.format("paletteNeutral%d", tone),
+                            String.format("md_theme_%s_palette_neutral_%d", nameLowerUnderScore, tone));
+                }
+                for (int tone : MaterialTheme.TONE_VALUES) {
+                    styleColorRef(String.format("paletteNeutralVariant%d", tone),
+                            String.format("md_theme_%s_palette_neutral_variant_%d", nameLowerUnderScore, tone));
+                }
             }
-            style("harmonize" + extendedColor.getNameForAttribute(), Boolean.toString(extendedColor.isHarmonize()));
-        }
+            if (extension.isGenerateTextColors()) {
+                textColorStyles();
+            }
+            endStyle();
+        }else{
 
-        if (extension.isGeneratePalette()) {
-            for (int tone : MaterialTheme.TONE_VALUES) {
-                styleColorRef(String.format("palettePrimary%d", tone),
-                        String.format("md_theme_%s_palette_primary_%d", nameLowerUnderScore, tone));
-            }
-            for (int tone : MaterialTheme.TONE_VALUES) {
-                styleColorRef(String.format("paletteSecondary%d", tone),
-                        String.format("md_theme_%s_palette_secondary_%d", nameLowerUnderScore, tone));
-            }
-            for (int tone : MaterialTheme.TONE_VALUES) {
-                styleColorRef(String.format("paletteTertiary%d", tone),
-                        String.format("md_theme_%s_palette_tertiary_%d", nameLowerUnderScore, tone));
-            }
-            for (int tone : MaterialTheme.TONE_VALUES) {
-                styleColorRef(String.format("paletteError%d", tone),
-                        String.format("md_theme_%s_palette_error_%d", nameLowerUnderScore, tone));
-            }
-            for (int tone : MaterialTheme.TONE_VALUES) {
-                styleColorRef(String.format("paletteNeutral%d", tone),
-                        String.format("md_theme_%s_palette_neutral_%d", nameLowerUnderScore, tone));
-            }
-            for (int tone : MaterialTheme.TONE_VALUES) {
-                styleColorRef(String.format("paletteNeutralVariant%d", tone),
-                        String.format("md_theme_%s_palette_neutral_variant_%d", nameLowerUnderScore, tone));
-            }
-        }
-        if (extension.isGenerateTextColors()) {
-            textColorStyles();
-        }
-        endStyle();
 
         beginStyle(String.format(darkThemeNameFormat, nameUpperCamel), parentDarkThemeName);
         styleColorRef("colorPrimary", String.format("md_theme_%s_dark_primary", nameLowerUnderScore));
@@ -346,6 +355,7 @@ public class ValuesAllGenerator extends ValuesGenerator {
             textColorStyles();
         }
         endStyle();
+        }
     }
 
     private void writeExtendedColors(

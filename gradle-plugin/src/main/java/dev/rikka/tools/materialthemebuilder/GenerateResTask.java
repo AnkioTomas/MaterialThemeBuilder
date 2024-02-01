@@ -1,27 +1,23 @@
 package dev.rikka.tools.materialthemebuilder;
 
-import dev.rikka.tools.materialthemebuilder.generator.ColorStateListGenerator;
-import dev.rikka.tools.materialthemebuilder.generator.ValuesAllGenerator;
-import dev.rikka.tools.materialthemebuilder.generator.ValuesV31Generator;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.tasks.TaskAction;
 
-import javax.inject.Inject;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
+
+import dev.rikka.tools.materialthemebuilder.generator.ColorStateListGenerator;
+import dev.rikka.tools.materialthemebuilder.generator.ValuesAllGenerator;
 
 public class GenerateResTask extends DefaultTask {
 
     private final File dir;
-    private final ValuesAllGenerator valuesAllGenerator;
-    private final ValuesV31Generator valuesV31Generator;
+    private final ValuesAllGenerator valuesLightGenerator;
+    private final ValuesAllGenerator valuesDarkGenerator;
     private final List<ColorStateListGenerator> colorStateListGenerators = new ArrayList<>();
 
     @Inject
@@ -40,8 +36,8 @@ public class GenerateResTask extends DefaultTask {
             }
         }
 
-        valuesAllGenerator = new ValuesAllGenerator(new File(dir, "values/values.xml"), extension);
-        valuesV31Generator = new ValuesV31Generator(new File(dir, "values-v31/values.xml"), extension);
+        valuesLightGenerator = new ValuesAllGenerator(new File(dir, "values/values.xml"), extension,0);
+        valuesDarkGenerator = new ValuesAllGenerator(new File(dir, "values-night/values.xml"), extension,1);
     }
 
     @TaskAction
@@ -50,8 +46,8 @@ public class GenerateResTask extends DefaultTask {
         for (ColorStateListGenerator colorStateListGenerator : colorStateListGenerators) {
             colorStateListGenerator.generate();
         }
-        valuesAllGenerator.generate();
-        valuesV31Generator.generate();
+        valuesLightGenerator.generate();
+        valuesDarkGenerator.generate();
     }
 
 
